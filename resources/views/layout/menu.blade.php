@@ -60,7 +60,7 @@
          <div id="mainMenu" class="tab-pane active">
             <ul class="nav am-sideleft-menu">
                <li class="nav-item">
-                  <a href="index.html" class="nav-link active">
+                  <a href="/" class="nav-link active">
                      <i class="icon ion-ios-home-outline"></i>
                      <span>Dashboard</span>
                   </a>

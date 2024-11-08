@@ -1,4 +1,6 @@
-    <!-- resources/views/penduduks/index.blade.php -->
+@extends('layout.menu')
+
+@section('konten')
     <!DOCTYPE html>
     <html>
     <head>
@@ -38,3 +40,4 @@
         </table>
     </body>
     </html>
+@endsection 
