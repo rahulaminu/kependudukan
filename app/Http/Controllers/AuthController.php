@@ -19,16 +19,16 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $email = $request->input('email');
-        $password = $request->input('password');
-
         // Hardcoded credentials
-        $validEmail = 'admin@example.com';
-        $validPassword = 'admin123';
+        $validEmail = 'admin@gmail.com';
+        $validPassword = '123456';
 
-        if ($email === $validEmail && $password === $validPassword) {
-            // Simulate login success
-            session(['user' => $validEmail]);
+        if ($request->email === $validEmail && $request->password === $validPassword) {
+            session(['user' => [
+                'email' => $validEmail,
+                'name' => 'Administrator'
+            ]]);
+            
             return redirect()->intended('/');
         }
 
@@ -37,7 +37,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         session()->forget('user');
         return redirect()->route('login');

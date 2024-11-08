@@ -35,15 +35,20 @@
                 </a>
                 <div class="dropdown-menu wd-200">
                     <ul class="list-unstyled user-profile-nav">
-                        <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
-                        <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-link" style="padding: 0;">
+                                    <i class="icon ion-power"></i> Sign Out
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-<<<<<<< HEAD
     <div class="am-sideleft">
         <ul class="nav am-sideleft-tab">
             <li class="nav-item">
@@ -59,65 +64,20 @@
                 <a href="#mainMenu" class="nav-link"></i></a>
             </li>
         </ul>
-=======
-   <div class="am-sideleft">
-      <ul class="nav am-sideleft-tab">
-         <li class="nav-item">
-            <a href="#mainMenu" class="nav-link active"><i class="icon ion-ios-home-outline tx-24"></i></a>
-         </li>
-         <li class="nav-item">
-            <a href="#mainMenu" class="nav-link"></a>
-         </li>
-         <li class="nav-item">
-            <a href="#mainMenu" class="nav-link"></i></a>
-         </li>
-         <li class="nav-item">
-            <a href="#mainMenu" class="nav-link"></i></a>
-         </li>
-      </ul>
-
-      <div class="tab-content">
-         <div id="mainMenu" class="tab-pane active">
-            <ul class="nav am-sideleft-menu">
-               <li class="nav-item">
-                  <a href="/" class="nav-link active">
-                     <i class="icon ion-ios-home-outline"></i>
-                     <span>Dashboard</span>
-                  </a>
-               </li>
-               <li class="nav-item">
-                  <a href="{{ route('penduduk.index') }}" class="nav-link">
-                     <i class="icon ion-ios-briefcase-outline"></i>
-                     <span>Data Kependudukan</span>
-                  </a>
-               </li>
-            </ul>
-         </div>
-      </div>
-   </div>
-
-   <div class="am-mainpanel" style="margin-top:60px">
-      <div class="am-pagebody">
-
-         <div class="card">
-            <div class="card-body">
-
-                @yield('konten')
->>>>>>> 8f97dcf55cbcbc9ee2303e13eafd62c722f973d0
 
         <div class="tab-content">
             <div id="mainMenu" class="tab-pane active">
                 <ul class="nav am-sideleft-menu">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active">
+                        <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
                             <i class="icon ion-ios-home-outline"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="widgets.html" class="nav-link">
+                        <a href="{{ route('penduduk.index') }}" class="nav-link {{ Request::is('penduduk', 'penduduk/create') ? 'active' : '' }}">
                             <i class="icon ion-ios-briefcase-outline"></i>
-                            <span>Widgets</span>
+                            <span>Data Kependudukan</span>
                         </a>
                     </li>
                 </ul>
