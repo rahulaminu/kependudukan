@@ -15,6 +15,9 @@ Route::middleware('checksession')->group(function () {
     Route::get('/penduduk', [PendudukController::class, 'index'])->name('penduduk.index');
     Route::post('/penduduk', [PendudukController::class, 'store'])->name('penduduk.store');
     Route::get('/penduduk/create', [PendudukController::class, 'create'])->name('penduduk.create');
+    Route::get('/penduduk/{penduduk}/edit', [PendudukController::class, 'edit'])->name('penduduk.edit');
+    Route::put('/penduduk/{penduduk}', [PendudukController::class, 'update'])->name('penduduk.update');
+    Route::delete('/penduduk/{penduduk}', [PendudukController::class, 'destroy'])->name('penduduk.destroy');
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
