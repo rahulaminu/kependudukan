@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('penduduk.update', $penduduk->id) }}" method="POST">
+                <form action="{{ route('penduduk.update', $penduduk->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -97,6 +97,17 @@
                         @error('pekerjaan')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Foto</label>
+                        <input type="file" name="foto" class="form-control" accept="image/*">
+                        @if($penduduk->foto)
+                            <div class="mt-2">
+                                <p>Foto Saat Ini:</p>
+                                <img src="{{ asset($penduduk->foto) }}" width="100" class="img-thumbnail">
+                            </div>
+                        @endif
                     </div>
 
                     <div class="form-group mt-3">

@@ -14,7 +14,7 @@ class PendudukController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'nik' => 'required|unique:penduduk',
             'nama' => 'required',
             'tanggal_lahir' => 'required|date',
@@ -23,11 +23,18 @@ class PendudukController extends Controller
             'agama' => 'required',
             'status' => 'required',
             'pekerjaan' => 'required',
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        Penduduk::create($request->all());
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $nama_foto = time() . '.' . $foto->getClientOriginalExtension();
+            $foto->move(public_path('uploads/penduduk'), $nama_foto);
+            $validatedData['foto'] = 'uploads/penduduk/' . $nama_foto;
+        }
 
-        return redirect()->route('penduduk.index')->with('success', 'Data penduduk berhasil ditambahkan.');
+        Penduduk::create($validatedData);
+        return redirect()->route('penduduk.index');
     }
 
     public function index()
@@ -41,9 +48,12 @@ class PendudukController extends Controller
         return view('penduduk.edit', compact('penduduk'));
     }
 
-    public function update(Request $request, Penduduk $penduduk)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $penduduk = Penduduk::findOrFail($id);
+        
+        // Validasi request
+        $rules = [
             'nik' => [
                 'required',
                 'string',
@@ -57,12 +67,31 @@ class PendudukController extends Controller
             'agama' => 'required|string',
             'status' => 'required|string',
             'pekerjaan' => 'required|string',
-        ]);
+        ];
 
-        $penduduk->update($request->all());
+        // Tambah validasi foto hanya jika ada file yang diupload
+        if ($request->hasFile('foto')) {
+            $rules['foto'] = 'required|image|mimes:jpeg,png,jpg|max:2048';
+        }
 
-        return redirect()->route('penduduk.index')
-            ->with('success', 'Data penduduk berhasil diperbarui');
+        $validatedData = $request->validate($rules);
+
+        // Proses upload foto
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
+            if ($penduduk->foto && file_exists(public_path($penduduk->foto))) {
+                unlink(public_path($penduduk->foto));
+            }
+
+            // Upload foto baru
+            $foto = $request->file('foto');
+            $nama_foto = time() . '.' . $foto->getClientOriginalExtension();
+            $foto->move(public_path('uploads/penduduk'), $nama_foto);
+            $validatedData['foto'] = 'uploads/penduduk/' . $nama_foto;
+        }
+
+        $penduduk->update($validatedData);
+        return redirect()->route('penduduk.index')->with('success', 'Data berhasil diperbarui');
     }
 
     public function destroy(Penduduk $penduduk)

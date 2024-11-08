@@ -2,7 +2,7 @@
 
 @section('konten')
     <h1>Tambah Penduduk</h1>
-    <form action="{{ route('penduduk.store') }}" method="POST">
+    <form action="{{ route('penduduk.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="nik">NIK:</label>
         <input type="text" id="nik" name="nik" required>
@@ -31,6 +31,10 @@
         <label for="pekerjaan">Pekerjaan:</label>
         <input type="text" id="pekerjaan" name="pekerjaan" required>
         <br>
+        <div class="form-group">
+            <label>Foto</label>
+            <input type="file" name="foto" class="form-control" accept="image/*">
+        </div>
         <button type="submit">Simpan</button>
     </form>
 @endsection 

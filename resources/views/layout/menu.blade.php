@@ -27,11 +27,14 @@
         </div>
 
         <div class="am-header-right">
+            @if(session()->has('user'))
             <div class="dropdown dropdown-profile">
                 <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
                     <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
-                    <span class="logged-name"><span class="hidden-xs-down">Username</span> <i
-                            class="fa fa-angle-down mg-l-3"></i></span>
+                    <span class="logged-name">
+                        <span class="hidden-xs-down">Admin</span>
+                        <i class="fa fa-angle-down mg-l-3"></i>
+                    </span>
                 </a>
                 <div class="dropdown-menu wd-200">
                     <ul class="list-unstyled user-profile-nav">
@@ -39,13 +42,14 @@
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-link" style="padding: 0;">
-                                    <i class="icon ion-power"></i>LogOut
+                                    <i class="icon ion-power"></i>Logout
                                 </button>
                             </form>
                         </li>
                     </ul>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 

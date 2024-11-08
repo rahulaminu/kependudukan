@@ -18,5 +18,6 @@ class Penduduk extends Model
         'agama',
         'status',
         'pekerjaan',
+        'foto'
     ];
 }

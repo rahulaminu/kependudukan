@@ -21,6 +21,7 @@
                     <th>Agama</th>
                     <th>Status</th>
                     <th>Pekerjaan</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -35,6 +36,15 @@
                     <td>{{ $p->agama }}</td>
                     <td>{{ $p->status }}</td>
                     <td>{{ $p->pekerjaan }}</td>
+                    <td>
+                        @if($p->foto)
+                            <a href="{{ asset($p->foto) }}" target="_blank">
+                                Click Here!
+                            </a>
+                        @else
+                            <span class="text-muted">Tidak ada foto</span>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('penduduk.edit', $p->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('penduduk.destroy', $p->id) }}" method="POST" style="display: inline;">
