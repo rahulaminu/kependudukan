@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('penduduk', PendudukController::class);
+Route::get('/penduduk', [PendudukController::class, 'index'])->name('penduduk.index');
+Route::post('/penduduk', [PendudukController::class, 'store'])->name('penduduk.store');
+Route::get('/penduduk/create', [PendudukController::class, 'create'])->name('penduduk.create');

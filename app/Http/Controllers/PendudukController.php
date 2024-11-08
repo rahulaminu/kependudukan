@@ -15,7 +15,7 @@ class PendudukController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nik' => 'required|unique:kependudukan',
+            'nik' => 'required|unique:penduduk',
             'nama' => 'required',
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required',
@@ -28,5 +28,11 @@ class PendudukController extends Controller
         Penduduk::create($request->all());
 
         return redirect()->route('penduduk.index')->with('success', 'Data penduduk berhasil ditambahkan.');
+    }
+
+    public function index()
+    {
+        $penduduks = Penduduk::all(); // Mengambil semua data penduduk
+        return view('penduduk.index', compact('penduduks')); // Mengirim data ke view
     }
 }
