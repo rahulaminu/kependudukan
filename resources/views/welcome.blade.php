@@ -1,4 +1,4 @@
 @extends('layout.menu')
 	@section('konten')
-		Halo! ini halaman kependudukan
+		<h3>Halo! ini halaman kependudukan</h3>
 	@endsection

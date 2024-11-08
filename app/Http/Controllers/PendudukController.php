@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Penduduk;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PendudukController extends Controller
 {
@@ -42,16 +43,19 @@ class PendudukController extends Controller
 
     public function update(Request $request, Penduduk $penduduk)
     {
-        //dd($request->all()); // Debugging
         $request->validate([
-            'nik' => 'required|string|max:16|unique:penduduk,nik,' . $penduduk->id,
+            'nik' => [
+                'required',
+                'string',
+                'max:16',
+                Rule::unique('penduduk')->ignore($penduduk->id)
+            ],
             'nama' => 'required|string|max:255',
-            'tempat_lahir' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string',
             'agama' => 'required|string',
-            'status_perkawinan' => 'required|string',
+            'status' => 'required|string',
             'pekerjaan' => 'required|string',
         ]);
 

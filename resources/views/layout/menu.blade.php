@@ -39,7 +39,7 @@
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-link" style="padding: 0;">
-                                    <i class="icon ion-power"></i> Sign Out
+                                    <i class="icon ion-power"></i>LogOut
                                 </button>
                             </form>
                         </li>
