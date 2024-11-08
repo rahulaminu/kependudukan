@@ -43,6 +43,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="am-sideleft">
         <ul class="nav am-sideleft-tab">
             <li class="nav-item">
@@ -58,6 +59,51 @@
                 <a href="#mainMenu" class="nav-link"></i></a>
             </li>
         </ul>
+=======
+   <div class="am-sideleft">
+      <ul class="nav am-sideleft-tab">
+         <li class="nav-item">
+            <a href="#mainMenu" class="nav-link active"><i class="icon ion-ios-home-outline tx-24"></i></a>
+         </li>
+         <li class="nav-item">
+            <a href="#mainMenu" class="nav-link"></a>
+         </li>
+         <li class="nav-item">
+            <a href="#mainMenu" class="nav-link"></i></a>
+         </li>
+         <li class="nav-item">
+            <a href="#mainMenu" class="nav-link"></i></a>
+         </li>
+      </ul>
+
+      <div class="tab-content">
+         <div id="mainMenu" class="tab-pane active">
+            <ul class="nav am-sideleft-menu">
+               <li class="nav-item">
+                  <a href="/" class="nav-link active">
+                     <i class="icon ion-ios-home-outline"></i>
+                     <span>Dashboard</span>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a href="{{ route('penduduk.index') }}" class="nav-link">
+                     <i class="icon ion-ios-briefcase-outline"></i>
+                     <span>Data Kependudukan</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <div class="am-mainpanel" style="margin-top:60px">
+      <div class="am-pagebody">
+
+         <div class="card">
+            <div class="card-body">
+
+                @yield('konten')
+>>>>>>> 8f97dcf55cbcbc9ee2303e13eafd62c722f973d0
 
         <div class="tab-content">
             <div id="mainMenu" class="tab-pane active">

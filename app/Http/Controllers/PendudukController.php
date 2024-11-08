@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Penduduk;
 use Illuminate\Http\Request;
 
@@ -32,7 +31,7 @@ class PendudukController extends Controller
 
     public function index()
     {
-        $penduduks = Penduduk::all(); // Mengambil semua data penduduk
-        return view('penduduk.index', compact('penduduks')); // Mengirim data ke view
+        $penduduk = Penduduk::all(); // Mengambil semua data penduduk
+        return view('penduduk.index', compact('penduduk')); // Mengirim data ke view
     }
 }

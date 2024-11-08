@@ -1,5 +1,4 @@
 @extends('layout.menu')
-
 @section('konten')
     <!DOCTYPE html>
     <html>
@@ -8,6 +7,9 @@
     </head>
     <body>
         <h1>Data Penduduk</h1>
+        <a href="{{ route('penduduk.create') }}" class="btn btn-primary mb-3">
+            <i class="fa fa-plus"></i> &nbsp;Tambah Data
+        </a>
         <table border="1">
             <thead>
                 <tr>
@@ -23,17 +25,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($penduduks as $penduduk)
+                @foreach($penduduk as $p)
                 <tr>
-                    <td>{{ $penduduk->id }}</td>
-                    <td>{{ $penduduk->nik }}</td>
-                    <td>{{ $penduduk->nama }}</td>
-                    <td>{{ $penduduk->tanggal_lahir }}</td>
-                    <td>{{ $penduduk->jenis_kelamin }}</td>
-                    <td>{{ $penduduk->alamat }}</td>
-                    <td>{{ $penduduk->agama }}</td>
-                    <td>{{ $penduduk->status }}</td>
-                    <td>{{ $penduduk->pekerjaan }}</td>
+                    <td>{{ $p->id }}</td>
+                    <td>{{ $p->nik }}</td>
+                    <td>{{ $p->nama }}</td>
+                    <td>{{ $p->tanggal_lahir }}</td>
+                    <td>{{ $p->jenis_kelamin }}</td>
+                    <td>{{ $p->alamat }}</td>
+                    <td>{{ $p->agama }}</td>
+                    <td>{{ $p->status }}</td>
+                    <td>{{ $p->pekerjaan }}</td>
                 </tr>
                 @endforeach
             </tbody>
