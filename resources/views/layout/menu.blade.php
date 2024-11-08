@@ -66,9 +66,9 @@
                   </a>
                </li>
                <li class="nav-item">
-                  <a href="widgets.html" class="nav-link">
+                  <a href="{{ route('penduduk.index') }}" class="nav-link">
                      <i class="icon ion-ios-briefcase-outline"></i>
-                     <span>Widgets</span>
+                     <span>Data Kependudukan</span>
                   </a>
                </li>
             </ul>
