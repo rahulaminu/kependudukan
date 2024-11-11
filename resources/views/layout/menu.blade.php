@@ -78,12 +78,14 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+                    @if(!Request::is('login'))
                     <li class="nav-item">
                         <a href="{{ route('penduduk.index') }}" class="nav-link {{ Request::is('penduduk', 'penduduk/create') ? 'active' : '' }}">
                             <i class="icon ion-ios-briefcase-outline"></i>
                             <span>Data Kependudukan</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -91,12 +93,9 @@
 
     <div class="am-mainpanel" style="margin-top:60px">
         <div class="am-pagebody">
-
             <div class="card">
                 <div class="card-body">
-
                     @yield('konten')
-
                 </div>
             </div>
 
