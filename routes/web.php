@@ -18,5 +18,6 @@ Route::delete('/penduduk/{penduduk}', [PendudukController::class, 'destroy'])->n
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login_proses'])->name('login_proses');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register_proses']);

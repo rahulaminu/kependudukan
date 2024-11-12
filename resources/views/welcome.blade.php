@@ -5,60 +5,67 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
-<link href="{{ asset('assetss/styles.css') }}" rel="stylesheet">
-<title>Web Design Mastery | Camp</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="{{ asset('assetss/styles.css') }}" rel="stylesheet">
+    <title>Web Design Mastery | Camp</title>
 </head>
 
 <body>
-<nav>
-    <div class="nav__header">
-        <div class="nav__logo">
-            <a href="/">Neumedira</a>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="/">Neumedira</a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
         </div>
-        <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
+        <ul class="nav__links" id="nav-links">
+            <li><a href="/">HOME</a></li>
+            <li><a href="{{ route('penduduk.index') }}">DATA KEPENDUDUKAN</a></li>
+        </ul>
+        @if(Auth::check())
+        <form action="{{ route('logout') }}" method="POST" style="float: right;">
+            @csrf
+            <button type="submit" class="btn btn-link">
+                Logout
+            </button>
+        </form>
+        @endif
+    </nav>
+    <div class="container">
+        <div class="container__left">
+            <h1>Kependudukan Indonesia</h1>
+            <div class="container__btn">
+                <button id="store" class="btn" onclick="Store()">TAMBAH DATA</button>
+            </div>
         </div>
-    </div>
-    <ul class="nav__links" id="nav-links">
-        <li><a href="/">HOME</a></li>
-        <li><a href="{{ route('penduduk.index') }}">DATA KEPENDUDUKAN</a></li>
-        <li><a href="#">CONTACT</a></li>
-    </ul>
-</nav>
-<div class="container">
-    <div class="container__left">
-        <h1>Kependudukan Indonesia</h1>
-        <div class="container__btn">
-            <button id="store" class="btn" onclick="Store()">TAMBAH DATA</button>
+        <div class="container__right">
+            <div class="content">
+            </div>
         </div>
-    </div>
-    <div class="container__right">
-        <div class="content">
-        </div>
-    </div>
-    <div class="message">
+        <div class="message">
 
+        </div>
     </div>
-</div>
 
-<script>
-    function Store(){
-        document.getElementById("store");
-        if(store){
-            window.location.href = "{{ route('penduduk.create') }}";
+    <script>
+        function Store() {
+            document.getElementById("store");
+            if (store) {
+                window.location.href = "{{ route('penduduk.create') }}";
+            }
         }
-    }
-</script>
-<script src="https://unpkg.com/scrollreveal"></script>
-<script src="main.js"></script>
+    </script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
 
-
+{{-- ⬇️ dibawah ini code chat-app ⬇️ jangan di hapus atau di edit ⬇️ --}}
 <!DOCTYPE html>
 <html lang="en">
 

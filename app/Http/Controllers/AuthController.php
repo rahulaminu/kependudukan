@@ -29,12 +29,12 @@ class AuthController extends Controller
         ]);
 
         // Mencari user berdasarkan email
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', operator: $request->email)->first();
         // Jika user ditemukan dan password valid
         if ($user) {
             // Set session atau login manual (jika Anda ingin menyimpan sesi pengguna)
-            Auth::login($user);
-
+            Auth::login(user: $user);
+                
             // Redirect ke home setelah login sukses
             return redirect()->route('home');
         } else {
@@ -46,7 +46,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('logout', 'Berhasil Logout');
+        return redirect()->route('home')->with('logout', 'Berhasil Logout');
     }
 
     public function register()
