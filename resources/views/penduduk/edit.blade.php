@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="nik">NIK</label>
                         <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" 
-                            value="{{ old('nik', $penduduk->nik) }}" required>
+                            value="{{ old('nik', $penduduk->nik) }}">
                         @error('nik')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" 
-                            value="{{ old('nama', $penduduk->nama) }}" required>
+                            value="{{ old('nama', $penduduk->nama) }}">
                         @error('nama')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="tanggal_lahir">Tanggal Lahir</label>
                         <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" id="tanggal_lahir" 
-                            name="tanggal_lahir" value="{{ old('tanggal_lahir', $penduduk->tanggal_lahir) }}" required>
+                            name="tanggal_lahir" value="{{ old('tanggal_lahir', $penduduk->tanggal_lahir) }}">
                         @error('tanggal_lahir')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label for="jenis_kelamin">Jenis Kelamin</label>
                         <select class="form-control @error('jenis_kelamin') is-invalid @enderror" id="jenis_kelamin" 
-                            name="jenis_kelamin" required>
+                            name="jenis_kelamin">
                             <option value="Laki-laki" {{ old('jenis_kelamin', $penduduk->jenis_kelamin) == 'Laki-laki' ? 'selected' : '' }}>
                                 Laki-laki
                             </option>
@@ -66,7 +66,7 @@
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <textarea class="form-control @error('alamat') is-invalid @enderror" id="alamat" 
-                            name="alamat" required>{{ old('alamat', $penduduk->alamat) }}</textarea>
+                            name="alamat">{{ old('alamat', $penduduk->alamat) }}</textarea>
                         @error('alamat')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label for="agama">Agama</label>
                         <input type="text" class="form-control @error('agama') is-invalid @enderror" id="agama" 
-                            name="agama" value="{{ old('agama', $penduduk->agama) }}" required>
+                            name="agama" value="{{ old('agama', $penduduk->agama) }}">
                         @error('agama')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" 
-                            name="status" value="{{ old('status', $penduduk->status) }}" required>
+                            name="status" value="{{ old('status', $penduduk->status) }}">
                         @error('status')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label for="pekerjaan">Pekerjaan</label>
                         <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" id="pekerjaan" 
-                            name="pekerjaan" value="{{ old('pekerjaan', $penduduk->pekerjaan) }}" required>
+                            name="pekerjaan" value="{{ old('pekerjaan', $penduduk->pekerjaan) }}">
                         @error('pekerjaan')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
