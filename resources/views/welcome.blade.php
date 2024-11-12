@@ -32,7 +32,7 @@
     <div class="container__left">
         <h1>Kependudukan Indonesia</h1>
         <div class="container__btn">
-            <button class="btn">TAMBAH DATA</button>
+            <button id="store" class="btn" onclick="Store()">TAMBAH DATA</button>
         </div>
     </div>
     <div class="container__right">
@@ -44,6 +44,14 @@
     </div>
 </div>
 
+<script>
+    function Store(){
+        document.getElementById("store");
+        if(store){
+            window.location.href = "{{ route('penduduk.create') }}";
+        }
+    }
+</script>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script src="main.js"></script>
 </body>

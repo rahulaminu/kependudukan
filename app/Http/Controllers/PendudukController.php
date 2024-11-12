@@ -23,45 +23,22 @@ class PendudukController extends Controller
             'agama' => 'required',
             'status' => 'required',
             'pekerjaan' => 'required',
-            'foto' => 'image|mimes:jpeg,png,jpg|max:2048|required'
+            'foto' => 'required|image|mimes:jpeg,png,jpg'
+        ], [
+            'foto.required' => 'Foto wajib diunggah.', // Pesan error jika foto kosong
+            'foto.image' => 'File harus berupa gambar.',
+            'foto.mimes' => 'Format foto harus jpeg, png, atau jpg.'
         ]);
-
 
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             $nama_foto = time() . '.' . $foto->getClientOriginalExtension();
             $foto->move(public_path('uploads/penduduk'), $nama_foto);
             $validatedData['foto'] = 'uploads/penduduk/' . $nama_foto;
-        } {
-            $validatedData = $request->validate([
-                'nik' => 'required|unique:penduduk',
-                'nama' => 'required',
-                'tanggal_lahir' => 'required|date',
-                'jenis_kelamin' => 'required',
-                'alamat' => 'required',
-                'agama' => 'required',
-                'status' => 'required',
-                'pekerjaan' => 'required',
-                'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048'
-            ], [
-                'foto.required' => 'Foto wajib diunggah.', // Pesan error jika foto kosong
-                'foto.image' => 'File harus berupa gambar.',
-                'foto.mimes' => 'Format foto harus jpeg, png, atau jpg.',
-                'foto.max' => 'Ukuran foto maksimal 2MB.'
-            ]);
-
-            if ($request->hasFile('foto')) {
-                $foto = $request->file('foto');
-                $nama_foto = time() . '.' . $foto->getClientOriginalExtension();
-                $foto->move(public_path('uploads/penduduk'), $nama_foto);
-                $validatedData['foto'] = 'uploads/penduduk/' . $nama_foto;
-            }
-
-
-
-            Penduduk::create($validatedData);
-            return redirect()->route('penduduk.index');
         }
+
+        Penduduk::create($validatedData);
+        return redirect()->route('penduduk.index')->with('success', 'Data berhasil disimpan');
     }
 
     public function index()
@@ -96,14 +73,13 @@ class PendudukController extends Controller
         ];
 
         if ($request->hasFile('foto')) {
-            $rules['foto'] = 'required|image|mimes:jpeg,png,jpg|max:2048';
+            $rules['foto'] = 'required|image|mimes:jpeg,png,jpg';
         }
 
         $validatedData = $request->validate($rules, [
             'foto.required' => 'Foto wajib diunggah.', // Pesan error jika foto kosong
             'foto.image' => 'File harus berupa gambar.',
-            'foto.mimes' => 'Format foto harus jpeg, png, atau jpg.',
-            'foto.max' => 'Ukuran foto maksimal 2MB.'
+            'foto.mimes' => 'Format foto harus jpeg, png, atau jpg.'
         ]);
 
         if ($request->hasFile('foto')) {
