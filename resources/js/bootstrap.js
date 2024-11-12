@@ -30,3 +30,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+
+import io from 'socket.io-client';
+
+const socket = io('http://127.0.0.1:8000');
+
+socket.on('chat message', function (msg) {
+    console.log('Message received: ' + msg);
+});
+
+// Kirim pesan
+function sendMessage(msg) {
+    socket.emit('chat message', msg);
+}

@@ -77,6 +77,7 @@ class Kernel extends HttpKernel
         // Middleware lain
         'auth' => \App\Http\Middleware\Authenticate::class,
         'checksession' => \App\Http\Middleware\CheckUserSession::class,
+        'level_user' => \App\Http\Middleware\Level_user::class,
         // Middleware lain
     ];
 }

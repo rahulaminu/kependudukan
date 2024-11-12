@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Judul Web</title>
+    <title>Kependudukan</title>
 
     <link href="{{ asset('assets/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
@@ -30,7 +30,7 @@
             @if(session()->has('user'))
             <div class="dropdown dropdown-profile">
                 <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                    <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
+                    <img src="" class="wd-32 rounded-circle" alt="">
                     <span class="logged-name">
                         <span class="hidden-xs-down">Admin</span>
                         <i class="fa fa-angle-down mg-l-3"></i>
@@ -78,14 +78,12 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    @if(!Request::is('login'))
                     <li class="nav-item">
                         <a href="{{ route('penduduk.index') }}" class="nav-link {{ Request::is('penduduk', 'penduduk/create') ? 'active' : '' }}">
                             <i class="icon ion-ios-briefcase-outline"></i>
                             <span>Data Kependudukan</span>
                         </a>
                     </li>
-                    @endif
                 </ul>
             </div>
         </div>

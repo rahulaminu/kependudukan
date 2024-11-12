@@ -23,8 +23,9 @@ class PendudukController extends Controller
             'agama' => 'required',
             'status' => 'required',
             'pekerjaan' => 'required',
-            'foto' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048|required'
         ]);
+
 
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
@@ -32,6 +33,8 @@ class PendudukController extends Controller
             $foto->move(public_path('uploads/penduduk'), $nama_foto);
             $validatedData['foto'] = 'uploads/penduduk/' . $nama_foto;
         }
+
+
 
         Penduduk::create($validatedData);
         return redirect()->route('penduduk.index');
