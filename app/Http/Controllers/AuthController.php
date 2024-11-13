@@ -57,12 +57,14 @@ class AuthController extends Controller
     public function register_proses(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
         // Membuat pengguna baru
         $user = new User();
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password); // Menggunakan Bcrypt
         $user->save();
