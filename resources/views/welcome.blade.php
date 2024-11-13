@@ -26,6 +26,76 @@
             align-items: center;
             font-size: 24px;
         }
+
+        /* Tambahkan gaya untuk bubble chat */
+        .chat-container {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        #messages {
+            list-style-type: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #messages li {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 15px;
+            position: relative;
+            max-width: 80%;
+        }
+
+        /* Gaya untuk pesan dari admin */
+        #messages li.admin {
+            background-color: #007bff;
+            color: #fff;
+            align-self: flex-start;
+            margin-left: auto;
+        }
+
+        /* Gaya untuk pesan dari tamu */
+        #messages li.guest {
+            background-color: #f1f1f1;
+            color: #000;
+            align-self: flex-start;
+            margin-right: auto;
+        }
+
+        #form {
+            display: flex;
+            align-items: center;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
     <title>Web Design Mastery | Camp</title>
 </head>
@@ -103,17 +173,17 @@
     <title>Chat System</title>
     <style>
         .chat-container {
-            max-width: 400px;
-            margin: auto 12em auto auto;
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 8px;
-            padding: 25px 25px 25px 35px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: none;
-            position: fixed; 
-            bottom: 20px;  
-            right: 20px; 
-            z-index: 1000; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px;
         }
 
         #messages {
@@ -122,7 +192,7 @@
             max-height: 300px;
             overflow-y: auto;
             margin-bottom: 10px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px #007bff;
         }
 
         #form {
@@ -155,7 +225,7 @@
     <div class="body-container">
         <div class="chat-container" id="chat-container">
             @if (Auth::check() && Auth::user()->level == 'admin')
-                <h2>Admin Chat</h2>
+                <h2>&#128100;Admin Chat</h2>
 
                 <h3>Connected Guests:</h3>
                 <ul id="guestList"></ul> <!-- Display the list of connected guests -->
@@ -164,7 +234,7 @@
                 <ul id="messages"></ul>
                 <form id="form" action="">
                     <input id="chatInput" autocomplete="off" placeholder="Type your message..." />
-                    <button type="submit">Send</button>
+                    <button type="submit">&#11166;</button>
                 </form>
 
                 <script>
@@ -211,15 +281,13 @@
                     });
                 </script>
             @else
-                <p>Silakan login untuk melanjutkan.</p>
-                <a href="{{ route('login') }}" class="btn btn-primary" title="Login"><i class="far fa-plus-square"></i>
-                    &nbsp;Login</a>
+
                 <br>
-                <h2>Guest Chat</h2>
+                <h2>&#128100;Guest Chat</h2>
                 <ul id="messages"></ul>
                 <form id="form" action="">
                     <input id="chatInput" autocomplete="off" placeholder="Type your message here..." />
-                    <button type="submit">Send</button>
+                    <button type="submit">&#11166;</button>
                 </form>
 
                 <script>
