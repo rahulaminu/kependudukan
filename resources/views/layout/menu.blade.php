@@ -23,7 +23,7 @@
                     class="icon ion-navicon-round"></i></a>
             <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i
                     class="icon ion-navicon-round"></i></a>
-            <a href="index.html" class="am-logo">SMK Telkom</a>
+            <a href="index.html" class="am-logo">Neumedira Magang</a>
         </div>
 
         <div class="am-header-right">
