@@ -113,7 +113,7 @@
         </div>
         <ul class="nav__links" id="nav-links">
             <li><a href="/">HOME</a></li>
-            <li><a href="{{ route('penduduk.index') }}">DATA KEPENDUDUKAN</a></li>
+            <li><a href="{{ route('penduduk.index') }}">LOGIN</a></li>
         </ul>
         @if (Auth::check())
             <form action="{{ route('logout') }}" method="POST" style="float: right;">
